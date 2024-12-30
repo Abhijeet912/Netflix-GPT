@@ -1,10 +1,8 @@
-import './App.css';
-
+import { Body } from './components/Body';
 function App() {
   return (
-    <div className="App text-9xl font-extrabold">
-      <h1>React App</h1>
-    </div>
+    <Body/>
+
   );
 } 
 

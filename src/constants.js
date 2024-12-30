@@ -1,0 +1,3 @@
+export const logo="https://res.cloudinary.com/dsiqj7ges/image/upload/v1735477574/Netflix_gpt/png-transparent-netflix-streaming-media-television-show-logo-netflix-television-text-trademark-thumbnail-removebg-preview_zccw9d.png"
+
+export const loginBg="https://res.cloudinary.com/dsiqj7ges/image/upload/v1735480202/Netflix_gpt/the_netflix_login_background__canada__2024___by_logofeveryt_dh0w8qv_yahkgr.jpg"
