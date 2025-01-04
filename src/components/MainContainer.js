@@ -21,7 +21,7 @@ const MainContainer = () => {
         }
     }, [movies]); // Re-run when movies array changes
     console.log(selectedMovie);
-    const {original_title, overview} = selectedMovie || {};
+    const {original_title, overview,id} = selectedMovie || {};
 
     return (
         <div>
@@ -32,9 +32,10 @@ const MainContainer = () => {
             ) : (
                 <p>No movies available</p>
             )}
-            <VideoBackground />
+            <VideoBackground movieId={id} />
         </div>
     );
 };
 
 export default MainContainer;
+

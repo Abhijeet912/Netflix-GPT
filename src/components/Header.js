@@ -1,73 +1,90 @@
-import React, { useEffect } from 'react'
-import { logo } from '../utils/constants'
+import React, { useEffect, useState } from 'react';
+import { logo } from '../utils/constants';
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addUser } from '../utils/userSlice';
+import { addUser, removeUser } from '../utils/userSlice';
 import { auth } from '../utils/firebase';
-import { removeUser } from '../utils/userSlice';
 
 export const Header = () => {
   const navigate = useNavigate();
-  const user=useSelector((store) => store.user);
-  const photoURL = useSelector(state =>  state?.user?.photoURL);
+  const user = useSelector((store) => store.user);
+  const photoURL = useSelector((state) => state?.user?.photoURL);
   const dispatch = useDispatch();
-
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const unSubscribe=onAuthStateChanged(auth, (user) => {
+    const unSubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        const {uid, email, displayName,photoURL} = user;
+        const { uid, email, displayName, photoURL } = user;
         dispatch(
-          addUser({uid :uid, email:email, displayName :displayName , photoURL:photoURL})
+          addUser({ uid, email, displayName, photoURL })
         );
         navigate("/browse");
-        
-        
-        // ...
       } else {
-        // User is signed out
         dispatch(removeUser());
         navigate("/");
-        // ...
       }
     });
     return () => {
-      //cleanup
       unSubscribe();
-    }
+    };
+  }, [dispatch, navigate]);
 
-  },[dispatch, navigate])
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
 
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   const handleSignOut = () => {
-    const auth = getAuth();
-    signOut(auth).then(() => {
-    // Sign-out successful.
-      navigate("/");
+    signOut(auth)
+      .then(() => navigate("/"))
+      .catch((error) => console.error(error));
+  };
 
-    }).catch((error) => {
-    // An error happened.
-    console.log(error);
-});
-  }
   return (
-    <div className = "Header h-14 align-middle flex absolute w-full z-10 bg-gradient-to-b from-black">
-        
-            <img src={logo} alt='Logo' className='h-16 m-2 p-2 ms-6'></img>
-            {user && <div className='w-1/2'>
-              <ul className='flex flex-wrap space-x-4 mx-4 my-5 font-bold text-white cursor-pointer'>
-                <li>Home</li>
-                <li>Tv Shows</li>
-                <li>Movies</li>
-              </ul>
-          
-          </div>}
-            {user && <div className='flex justify-end items-center w-full p-2'>
-              <img alt="username" className='w-7 h-7 rounded-full  border-red-600' src={photoURL}></img>
-              <button onClick={handleSignOut} className=' bg-red-600 text-slate-200  text-xs font-extrabold rounded-md h-8 w-12'>Signout</button>
-            </div>}
-        
-    </div>
-  )
-}
+    <header
+      className={`fixed top-0 left-0 w-full z-10 transition-all duration-300 ${
+        isScrolled ? "bg-black" : "bg-gradient-to-b from-black"
+      }`}
+    >
+      <div className="flex items-center justify-between h-14 px-6">
+        <img src={logo} alt="Logo" className="h-10" />
+        {user && (
+          <nav className="flex space-x-6 font-bold text-white">
+            <a href="#home" className="hover:text-red-600 " >
+              Home
+            </a>
+            <a href="#tvshows" className="hover:text-red-600">
+              TV Shows
+            </a>
+            <a href="#movies" className="hover:text-red-600">
+              Movies
+            </a>
+          </nav>
+        )}
+        {user && (
+          <div className="flex items-center space-x-4">
+            <img
+              alt="username"
+              className="w-8 h-8 rounded-full border-2 border-red-600"
+              src={photoURL}
+            />
+            <button
+              onClick={handleSignOut}
+              className="bg-red-600 text-white text-xs font-bold rounded-md px-4 py-1"
+            >
+              Sign Out
+            </button>
+          </div>
+        )}
+      </div>
+    </header>
+  );
+};
