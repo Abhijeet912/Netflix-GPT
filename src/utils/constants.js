@@ -1,4 +1,4 @@
-export const logo="https://res.cloudinary.com/dsiqj7ges/image/upload/v1735477574/Netflix_gpt/png-transparent-netflix-streaming-media-television-show-logo-netflix-television-text-trademark-thumbnail-removebg-preview_zccw9d.png"
+export const logo="https://res.cloudinary.com/dsiqj7ges/image/upload/v1736145307/Netflix_gpt/png-transparent-netflix-streaming-media-television-show-logo-netflix-television-text-trademark-thumbnail-removebg-preview_zccw9d.png"
 
 export const loginBg="https://res.cloudinary.com/dsiqj7ges/image/upload/v1735480202/Netflix_gpt/the_netflix_login_background__canada__2024___by_logofeveryt_dh0w8qv_yahkgr.jpg"
 
@@ -11,3 +11,5 @@ export const API_OPTIONS = {
       Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiODJhYWU1ZDYwMDNlOTU5MWI3NzlmMDVhMjAzNzdhZCIsIm5iZiI6MTczNTgxOTM1NC4wMDg5OTk4LCJzdWIiOiI2Nzc2ODA1YTNmYzc2ZWE1ODg5MmVjNmIiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.gv8em_aOgM6AKrOb0GTj5uunpM7Obu6wT1ZKkGzH140'
     }
   };
+
+  export const movieCardUrl = "https://image.tmdb.org/t/p/w200/"

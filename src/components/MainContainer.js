@@ -20,7 +20,7 @@ const MainContainer = () => {
             setSelectedMovie(movie);
         }
     }, [movies]); // Re-run when movies array changes
-    console.log(selectedMovie);
+    //console.log(selectedMovie);
     const {original_title, overview,id} = selectedMovie || {};
 
     return (

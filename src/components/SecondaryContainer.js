@@ -1,9 +1,33 @@
-import React from 'react'
+import React from 'react';
+import MovieList from './MovieList';
+import { useSelector } from 'react-redux';
 
 const SecondaryContainer = () => {
-  return (
-    <div>SecondaryContainer</div>
-  )
-}
+  const movies = useSelector((store) => store?.movies);
 
-export default SecondaryContainer
+  return (
+    <div className="relative  bg-black text-white ">
+      {/**
+       * MovieList -Popular
+       * MovieList -Top Rated
+       * MovieList - Trending
+       * MovieList - Action
+       * MovieList - Comedy
+       * MovieList - Horror
+       */}
+      <div className="relative -top-56 z-9 pb-4 bg-blend-multiply ps-4">
+        {/* Adjust the -top value as needed for overlap */}
+        <MovieList title={"Now Playing"} movies={movies?.NowPlayingMovies} />
+      
+      <MovieList title={"Top Rated"} movies={movies?.TopRatedMovies} />
+      <MovieList title={"Popular Movies"} movies={movies?.PopularMovies} />
+      <MovieList title={"Trending Today"} movies={movies?.TrendingToday} />
+      <MovieList title={"Now Playing"} movies={movies?.NowPlayingMovies} />
+      <MovieList title={"Now Playing"} movies={movies?.NowPlayingMovies} />
+      <MovieList title={"Now Playing"} movies={movies?.NowPlayingMovies} />
+      </div>
+    </div>
+  );
+};
+
+export default SecondaryContainer;

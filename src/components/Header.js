@@ -33,7 +33,7 @@ export const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 0);
+      setIsScrolled(window.scrollY > 20);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -50,12 +50,12 @@ export const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 w-full z-10 transition-all duration-300 ${
-        isScrolled ? "bg-black" : "bg-gradient-to-b from-black"
+      className={`fixed  top-0 left-0 w-full z-10 transition-all duration-300 ${
+        isScrolled ? "bg-black px-10" : "bg-gradient-to-b from-black px-10"
       }`}
     >
-      <div className="flex items-center justify-between h-14 px-6">
-        <img src={logo} alt="Logo" className="h-10" />
+      <div className="flex items-center justify-between h-14 ">
+        <img src={logo} alt="Logo" className=" w-32 h-28" />
         {user && (
           <nav className="flex space-x-6 font-bold text-white">
             <a href="#home" className="hover:text-red-600 " >

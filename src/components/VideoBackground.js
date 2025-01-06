@@ -11,7 +11,7 @@ const VideoBackground = ({ movieId }) => {
   const onPlayerReady = (event) => {
     const player = event.target;
     playerRef.current = player; // Store player instance in ref
-    console.log("YouTube player is ready:", player); // Debugging
+    //console.log("YouTube player is ready:", player); // Debugging
     player.mute(); // Mute the video by default
     player.playVideo(); // Start playback
   };
@@ -27,7 +27,7 @@ const VideoBackground = ({ movieId }) => {
       }
       setIsMuted(!isMuted); // Toggle the mute state
     } else {
-      console.error("YouTube player instance is not available");
+      //console.error("YouTube player instance is not available");
     }
   };
 
@@ -58,11 +58,15 @@ const VideoBackground = ({ movieId }) => {
           videoId={trailer?.key}
           opts={opts}
           onReady={onPlayerReady}
-          className="absolute top-0 left-0 w-full h-full scale-[1.7]" // Adjust scale as needed
+          className="absolute -top-10 left-0 w-full h-full scale-[1.5]  bg-gradient-to-t from-bott" // Adjust scale as needed
         />
       </div>
-      {/* Use the MuteButton component */}
-      <MuteButton isMuted={isMuted} onToggle={toggleMute} />
+      <div
+        className="absolute bottom-0 left-0 w-full h-52 bg-gradient-to-t from-black to-transparent pointer-events-none opacity-80"
+        style={{ height: '200px' }} // Adjust height for the gradient
+      ></div>
+  
+    
     </div>
   );
 };
