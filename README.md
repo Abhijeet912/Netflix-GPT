@@ -8,7 +8,7 @@ Netflix GPT is an AI-powered movie and TV show recommendation platform. Using Go
 
 Scan the QR code below to visit the live site:
 
-![QR Code](./path-to-qr-code.png)
+![QR Code](./NetflixgptQR.png)
 
 Or click [here](https://netflix-gpt-7bd86.web.app/) to access it.
 
