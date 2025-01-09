@@ -65,36 +65,55 @@ Or click [here](https://netflix-gpt-7bd86.web.app/) to access it.
 ## Folder Structure
 
 ```
-root
-├── public
-├── src
-│   ├── components
-│   │   ├── GptSearchBar.js
-│   │   ├── GptMovieSuggestion.js
-│   │   ├── Header.js
+NETFLIX-GPT/
+├── public/
+├── src/
+│   ├── components/
 │   │   ├── Body.js
 │   │   ├── Browse.js
+│   │   ├── GptMovieSuggestion.js
 │   │   ├── GptSearch.js
-│       ├── MainContainer.js
-│       ├── MovieCard.js
-│       ├── MovieCard.js
-│       ├── MovieList.js
-        ├── SecondaryConatiner.js
-        ├── VideoLoader.js
-        ├── VideoBackground.js
-        ├── VideoTitle.js
-│   │   └── Login.js
-│   ├── utils
+│   │   ├── GptSearchBar.js
+│   │   ├── Header.js
+│   │   ├── Login.js
+│   │   ├── MainContainer.js
+│   │   ├── MovieCard.js
+│   │   ├── MovieList.js
+│   │   ├── MuteButton.js
+│   │   ├── SecondaryContainer.js
+│   │   ├── VideoBackground.js
+│   │   ├── VideoLoader.js
+│   │   ├── VideoTitle.js
+│   ├── hooks/
+│   │   ├── useMovieTrailer.js
+│   │   ├── useNowPlayingMovies.js
+│   │   ├── usePopularMovies.js
+│   │   ├── useTopRatedMovies.js
+│   │   ├── useTrendingToday.js
+│   ├── utils/
+│   │   ├── appStore.js
+│   │   ├── configSlice.js
 │   │   ├── constants.js
 │   │   ├── firebase.js
-│   │   └── validation.js
-│   ├── redux
-│   │   ├── store.js
-│   │   └── userSlice.js
-│   └── App.js
+│   │   ├── gptSlice.js
+│   │   ├── languageConstants.js
+│   │   ├── movieSlice.js
+│   │   ├── userSlice.js
+│   │   ├── validation.js
+│   ├── App.css
+│   ├── App.js
+│   ├── App.test.js
+│   ├── index.css
+│   ├── index.js
+│   ├── logo.svg
+│   ├── reportWebVitals.js
+│   ├── setupTests.js
+├── .firebaserc
 ├── .gitignore
+├── firebase.json
+├── package-lock.json
 ├── package.json
-└── README.md
+
 ```
 
 ---
@@ -137,19 +156,15 @@ Contributions are welcome! Follow these steps to contribute:
 
 ---
 
-## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
----
 
 ## Contact
 
 For inquiries, please contact:
 
-- **Email:** [your-email@example.com](mailto:abhijeet.anand837@gmail.com)
-- **LinkedIn:** [Your Profile](https://www.linkedin.com/in/abhijeet-anand17/)
-- **GitHub:** [Your GitHub](https://github.com/Abhijeet912)
+- **Email:** [Abhijeet Anand -Gmail](mailto:abhijeet.anand837@gmail.com)
+- **LinkedIn:** [Abhijeet-Linkedin](https://www.linkedin.com/in/abhijeet-anand17/)
+- **GitHub:** [Abhijeet 912](https://github.com/Abhijeet912)
 
 ---
 
