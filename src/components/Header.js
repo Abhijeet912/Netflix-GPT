@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
-import { logo } from '../utils/constants';
+import { logo, SUPPORTED_LANGUAGES } from '../utils/constants';
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 import { auth } from '../utils/firebase';
+import { toggleSearchView } from '../utils/gptSlice';
+import { changeLanguage } from '../utils/configSlice';
 
 export const Header = () => {
   const navigate = useNavigate();
   const user = useSelector((store) => store.user);
+  const viewLanguage = useSelector((store) => store.gpt.showGptSearch);
   const photoURL = useSelector((state) => state?.user?.photoURL);
   const dispatch = useDispatch();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -31,6 +34,7 @@ export const Header = () => {
     };
   }, [dispatch, navigate]);
 
+  //handle header scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
@@ -48,6 +52,14 @@ export const Header = () => {
       .catch((error) => console.error(error));
   };
 
+  const handleGptSearchClick = () => {
+    dispatch(toggleSearchView());
+  }
+
+  const handleLanguageChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  }
+
   return (
     <header
       className={`fixed  top-0 left-0 w-full z-10 transition-all duration-300 ${
@@ -56,18 +68,17 @@ export const Header = () => {
     >
       <div className="flex items-center justify-between h-14 ">
         <img src={logo} alt="Logo" className=" w-32 h-28" />
-        {user && (
-          <nav className="flex space-x-6 font-bold text-white">
-            <a href="#home" className="hover:text-red-600 " >
-              Home
-            </a>
-            <a href="#tvshows" className="hover:text-red-600">
-              TV Shows
-            </a>
-            <a href="#movies" className="hover:text-red-600">
-              Movies
-            </a>
-          </nav>
+        {user && ( 
+          <div>
+          <button className='text-base font-bold text-white bg-red-600 p-2 rounded-full h-10 '
+          onClick={handleGptSearchClick}>
+            {viewLanguage?'Homepage':'GPT 💬'}</button>
+          {viewLanguage && <select className='p-2 m-2 bg-gray-600 text-white rounded-full font-semibold' onChange={handleLanguageChange}>
+            {SUPPORTED_LANGUAGES.map((lang)=>(
+              <option key={lang.identifier} value={lang.identifier}>{lang.language}</option>
+            ))}
+          </select>}
+          </div>
         )}
         {user && (
           <div className="flex items-center space-x-4">

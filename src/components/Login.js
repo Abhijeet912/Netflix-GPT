@@ -74,53 +74,68 @@ export const Login = () => {
 
   return (
     <div>
-      <Header />
-      <div className="relative h-full">
-        <img src={loginBg} alt="background_image" className="object-cover h-full" />
-        <div className="Form flex justify-center items-center bg-black bg-opacity-30 w-full h-full absolute inset-0 pt-[180px]">
-          <div className="relative bg-black bg-opacity-60 rounded-lg shadow-lg p-6 w-80 h-full">
-            <h1 className="text-2xl font-semibold text-white mb-4">
-              {isSigninForm ? 'Sign In' : 'Sign Up'}
-            </h1>
-            <form onSubmit={(e) => e.preventDefault()} className="flex flex-col">
-              {!isSigninForm && (
-                <input
-                  ref={name}
-                  type="text"
-                  placeholder="Name"
-                  className="p-2 mb-4 border border-gray-600 rounded-md bg-gray-900 text-white placeholder-gray-400"
-                />
-              )}
-              <input
-                ref={email}
-                type="text"
-                placeholder="Email Address"
-                className="p-2 mb-4 border border-gray-600 rounded-md bg-gray-900 text-white placeholder-gray-400"
-              />
-              <input
-                ref={password}
-                type="password"
-                placeholder="Password"
-                className="p-2 mb-4 border border-gray-600 rounded-md bg-gray-900 text-white placeholder-gray-400"
-              />
-              <p className="text-red-500 m-2 p-2">{errorMessage}</p>
-              <button
-                className="p-2 bg-red-600 hover:bg-red-700 w-full rounded-md text-white font-semibold"
-                onClick={handleOnClickButton}
-                disabled={isLoading}
-              >
-                {isSigninForm ? 'Sign In' : 'Sign Up'}
-              </button>
-            </form>
-            <p
-              className="SignUp text-cyan-50 my-3 py-3 mx-2 cursor-pointer hover:underline"
-              onClick={toggleSignInForm}
-            >
-              {isSigninForm ? 'New to Netflix? Sign Up Now' : 'Already a member? Sign in now'}
-            </p>
-          </div>
-        </div>
+  <Header />
+  <div className="relative min-h-screen">
+    {/* Background Image */}
+    <img
+      src={loginBg}
+      alt="background_image"
+      className="absolute top-0 left-0 w-full h-full object-cover -z-10"
+    />
+
+    {/* Form Container */}
+    <div className="flex justify-center items-center bg-black bg-opacity-30 w-full h-full absolute inset-0">
+      <div className="relative bg-black bg-opacity-80 rounded-lg shadow-lg p-6 w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-md">
+        <h1 className="text-2xl font-semibold text-white mb-4 text-center">
+          {isSigninForm ? "Sign In" : "Sign Up"}
+        </h1>
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="flex flex-col space-y-4"
+        >
+          {!isSigninForm && (
+            <input
+              ref={name}
+              type="text"
+              placeholder="Name"
+              className="p-2 border border-gray-600 rounded-md bg-gray-900 text-white placeholder-gray-400 focus:ring-2 focus:ring-red-600"
+            />
+          )}
+          <input
+            ref={email}
+            type="text"
+            placeholder="Email Address"
+            className="p-2 border border-gray-600 rounded-md bg-gray-900 text-white placeholder-gray-400 focus:ring-2 focus:ring-red-600"
+          />
+          <input
+            ref={password}
+            type="password"
+            placeholder="Password"
+            className="p-2 border border-gray-600 rounded-md bg-gray-900 text-white placeholder-gray-400 focus:ring-2 focus:ring-red-600"
+          />
+          {errorMessage && (
+            <p className="text-red-500 text-sm text-center">{errorMessage}</p>
+          )}
+          <button
+            className="p-2 bg-red-600 hover:bg-red-700 w-full rounded-md text-white font-semibold focus:outline-none focus:ring-2 focus:ring-red-600"
+            onClick={handleOnClickButton}
+            disabled={isLoading}
+          >
+            {isSigninForm ? "Sign In" : "Sign Up"}
+          </button>
+        </form>
+        <p
+          className="text-cyan-50 my-3 py-3 text-center cursor-pointer hover:underline"
+          onClick={toggleSignInForm}
+        >
+          {isSigninForm
+            ? "New to Netflix? Sign Up Now"
+            : "Already a member? Sign in now"}
+        </p>
       </div>
     </div>
+  </div>
+</div>
+
   );
 };

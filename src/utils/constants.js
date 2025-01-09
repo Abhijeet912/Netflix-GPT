@@ -13,3 +13,16 @@ export const API_OPTIONS = {
   };
 
   export const movieCardUrl = "https://image.tmdb.org/t/p/w200/"
+
+  export const SUPPORTED_LANGUAGES = [
+    {identifier: 'en', language: "English"},
+    {identifier: 'hi', language: "Hindi"},
+    {identifier: 'es', language: "Spanish"},
+  ]
+
+  export const GptAPI = "AIzaSyDi1OmoGFqc6V0fR6si-m4MqkuMvYHQHsk"
+
+
+  
+
+  

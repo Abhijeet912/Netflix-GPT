@@ -22,9 +22,6 @@ const SecondaryContainer = () => {
       <MovieList title={"Top Rated"} movies={movies?.TopRatedMovies} />
       <MovieList title={"Popular Movies"} movies={movies?.PopularMovies} />
       <MovieList title={"Trending Today"} movies={movies?.TrendingToday} />
-      <MovieList title={"Now Playing"} movies={movies?.NowPlayingMovies} />
-      <MovieList title={"Now Playing"} movies={movies?.NowPlayingMovies} />
-      <MovieList title={"Now Playing"} movies={movies?.NowPlayingMovies} />
       </div>
     </div>
   );
